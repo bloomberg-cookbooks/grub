@@ -1,9 +1,10 @@
 #
-# Cookbook: grub
+# Cookbook: blp-grub
+# License: Apache 2.0
 #
-# Copyright (c) 2016 Bloomberg L.P., All Rights Reserved.
+# Copyright 2015-2017, Bloomberg Finance L.P.
 #
-#
-grub node['grub']['service_name'] do |r|
-  node['grub']['config'].each_pair { |k, v| r.send(k, v) }
+
+grub_config '/etc/default/grub' do
+  settings node['grub']['config']['settings']
 end

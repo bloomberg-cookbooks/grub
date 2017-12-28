@@ -1,12 +1,15 @@
-name 'grub'
-maintainer 'Bloomberg L.P.'
-maintainer_email 'acaiafa1@bloomberg.net'
+name 'blp-grub'
+version '1.0.0'
+maintainer 'Bloomberg Finance L.P.'
+maintainer_email 'chef@bloomberg.net'
+license 'Apache-2.0'
 description 'Configures grub'
 long_description 'Configures grub'
-version '0.1.2'
 
-supports 'centos', '>= 6.4'
-supports 'redhat', '>= 6.4'
+issues_url 'https://github.com/bloomberg-cookbooks/grub/issues'
+source_url 'https://github.com/bloomberg-cookbooks/grub'
+chef_version '>= 12.5'
+
+supports 'centos', '>= 6.0'
+supports 'redhat', '>= 6.0'
 supports 'ubuntu', '>= 12.04'
-
-depends 'poise'

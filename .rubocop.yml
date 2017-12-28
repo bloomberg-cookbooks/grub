@@ -1,0 +1,11 @@
+Lint/EndAlignment:
+  Enabled: false
+Style/SingleLineMethods:
+  Enabled: false
+Style/MultilineBlockChain:
+  Enabled: false
+AllCops:
+  Exclude:
+    - Policyfile.rb
+    - metadata.rb
+    - 'test/**/*.rb'

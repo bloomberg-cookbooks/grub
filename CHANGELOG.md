@@ -2,12 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
-
 ## [1.0.0]
-### Bug Fixes
-- Fixes integration test harness using Test Kitchen.
-- Squashes several issues while testing locally and on machines.
+- Rename and move cookbook under _bloomberg-cookbooks_ organization.
+- Update cookbook to use Chef 12 resource DSL.
+- Updates integration tests to use InSpec and Policyfiles.
 
-[Unreleased]: https://bbgithub.dev.bloomberg.com/chef/blp-base-cookbook/compare/v1.0.0...HEAD
-[1.0.0]: https://bbgithub.dev.bloomberg.com/chef/blp-base-cookbook/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/bloomberg-cookbooks/grub/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/bloomberg-cookbooks/grub/tree/v1.0.0

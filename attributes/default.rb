@@ -1,9 +1,8 @@
 #
-# Cookbook: grub-cookbook
+# Cookbook: blp-grub
 # License: Apache 2.0
 #
-# Copyright (C) 2016 Bloomberg Finance L.P.
+# Copyright 2015-2017, Bloomberg Finance L.P.
 #
 
-default['grub']['service_name'] = 'default'
-default['grub']['config']['path'] = '/etc/default/grub'
+default['grub']['config'] = {}

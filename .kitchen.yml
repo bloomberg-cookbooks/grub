@@ -1,18 +1,72 @@
----
 driver:
-  name: vagrant
+  name: dokken
+  chef_version: current
+  privileged: true
+
+transport:
+  name: dokken
 
 provisioner:
-  name: chef_zero
+  name: dokken
+  deprecations_as_errors: true
+
+verifier:
+  name: inspec
 
 platforms:
-  - name: ubuntu-14.04
+  - name: centos-6
+    named_run_list: centos
+    driver:
+      image: centos:6
+      platform: rhel
+      pid_one_command: /sbin/init
+      intermediate_instructions:
+        - RUN yum -y install lsof which initscripts net-tools sudo wget
+
+  - name: centos-7
+    named_run_list: centos
+    driver:
+      image: centos:7
+      platform: rhel
+      pid_one_command: /usr/lib/systemd/systemd
+      intermediate_instructions:
+        - RUN yum -y install lsof which systemd-sysv initscripts net-tools sudo wget
+
   - name: ubuntu-12.04
-  - name: centos-7.1
-  - name: centos-6.7
-  - name: centos-5.8
+    named_run_list: debian
+    driver:
+      image: ubuntu-upstart:12.04
+      pid_one_command: /sbin/init
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools sudo -y
+
+  - name: ubuntu-14.04
+    named_run_list: debian
+    driver:
+      image: ubuntu-upstart:14.04
+      pid_one_command: /sbin/init
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools sudo -y
+
+  - name: ubuntu-16.04
+    named_run_list: debian
+    driver:
+      image: ubuntu:16.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools sudo -y
+
+  - name: ubuntu-18.04
+    named_run_list: debian
+    driver:
+      image: ubuntu:18.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools sudo -y
 
 suites:
   - name: default
-    run_list:
-      - recipe[grub::default]
