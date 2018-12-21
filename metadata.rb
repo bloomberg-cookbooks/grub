@@ -1,5 +1,5 @@
 name 'blp-grub'
-version '1.0.1'
+version '1.0.0'
 maintainer 'Bloomberg Finance L.P.'
 maintainer_email 'chef@bloomberg.net'
 license 'Apache-2.0'
