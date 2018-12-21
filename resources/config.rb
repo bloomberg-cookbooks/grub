@@ -16,7 +16,7 @@ def content
     next n.flatten.map(&:to_s).join(',') if n.is_a?(Array)
     n
   end.map do |k, v|
-    'GRUB_' << k.upcase << (v =~ /[\W\s]+/ ? "=\"#{v}\"" : "=#{v}")
+    'GRUB_' << k.upcase << (v.is_a?(String) ? "=\"#{v}\"" : "=#{v}")
   end.join("\n")
 end
 
