@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.1]
+- fix quoting for strings with spaces vs non spaced values
+
 ## [1.0.0]
 - Rename and move cookbook under _bloomberg-cookbooks_ organization.
 - Update cookbook to use Chef 12 resource DSL.
