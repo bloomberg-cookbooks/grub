@@ -24,7 +24,8 @@ Policefile.rb or directly using attributes. All GRUB specific settings
 should use underscores like the examples below.
 
 ### Hash merging
-Values provided as hashes (under ['grub']['config']['settings'][key] will be merged/flattened to form strings.
+Values provided as hashes (under `['grub']['config']['settings'][key]`)
+will be merged/flattened to form strings.
 This is intended to allow overrides to, for example, kernel boot options without ugly string manipulation.
 
 This approach is probably best demonstrated using an example:
@@ -51,7 +52,7 @@ for each key = value pair in the hash:
   * if value is `nil`, it is omitted and the key is inserted without a value
     `...[cmdline_linux']['nomodeset'] = nil` results in `nomodeset`
 
-  * if value is an array, the result is key=v1 key=v2... once for each value in the array
+  * if value is an array, the result is key=v1 key=v2... for each value in the array
     `...['cmdline_linux']['console'] = [ 'x', 'y'']` results in `console=x console=y`
 
   * otherwise we simply insert key=value
