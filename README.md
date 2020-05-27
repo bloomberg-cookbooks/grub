@@ -23,6 +23,44 @@ file will remain intact.  You can tweak the settings in the
 Policefile.rb or directly using attributes. All GRUB specific settings
 should use underscores like the examples below.
 
+### Hash merging
+Values provided as hashes (under `['grub']['config']['settings'][key]`)
+will be merged/flattened to form strings.
+This is intended to allow overrides to, for example, kernel boot options without ugly string manipulation.
+
+This approach is probably best demonstrated using an example:
+
+```ruby
+default['grub']['config']['settings']['cmdline_linux']['biosdevname'] = '0'
+default['grub']['config']['settings']['cmdline_linux']['nomodeset'] = nil
+default['grub']['config']['settings']['cmdline_linux']['console'] = [ 'tty0', 'ttyS1,115200n8']
+```
+
+is the precise equivalent of
+```ruby
+default['grub']['config']['settings']['cmdline_linux'] = 'biosdevname=0 nomodeset console=tty0 console=ttyS1,115200n8'
+```
+
+Using hashes permits simple overrides like the following
+```ruby
+node.override[grub']['config']['settings']['cmdline_linux']['biosdevname'] = '1'
+```
+
+### How hash values are merged
+for each key = value pair in the hash:
+
+  * if value is `nil`, it is omitted and the key is inserted without a value
+    `...[cmdline_linux']['nomodeset'] = nil` results in `nomodeset`
+
+  * if value is an array, the result is key=v1 key=v2... for each value in the array
+    `...['cmdline_linux']['console'] = [ 'x', 'y'']` results in `console=x console=y`
+
+  * otherwise we simply insert key=value
+    `...['cmdline_linux']['biosdevname'] = '0'` results in `biosdevname=0`
+
+
+To permit overrides to (for example) commandline options it is possible to specify
+
 ### Recipe
 ```ruby
 node.default['grub']['config']['settings']['timeout'] = 30
