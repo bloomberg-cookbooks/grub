@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.0]
+- Add support for hashes in grub settings
+
 ## [1.0.1]
 - fix quoting for strings with spaces vs non spaced values
 
@@ -10,5 +13,5 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Update cookbook to use Chef 12 resource DSL.
 - Updates integration tests to use InSpec and Policyfiles.
 
-[Unreleased]: https://github.com/bloomberg-cookbooks/grub/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/bloomberg-cookbooks/grub/compare/v1.1.0...HEAD
 [1.0.0]: https://github.com/bloomberg-cookbooks/grub/tree/v1.0.0
